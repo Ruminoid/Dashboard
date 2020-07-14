@@ -20,6 +20,23 @@ namespace Ruminoid.Dashboard
 
         #endregion
 
+        #region Recent Products
+
+        [JsonProperty]
+        private Dictionary<string, int> recentProducts = new Dictionary<string, int>();
+
+        public Dictionary<string, int> RecentProducts
+        {
+            get => recentProducts;
+            set
+            {
+                recentProducts = value;
+                OnPropertyChanged();
+            }
+        }
+
+        #endregion
+
         #region PropertyChanged
 
         public event PropertyChangedEventHandler PropertyChanged;
