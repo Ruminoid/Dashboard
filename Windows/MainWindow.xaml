@@ -25,48 +25,47 @@
         </chrome:WindowChrome>
     </chrome:WindowChrome.Instance>
 
-	<Grid>
-		<Grid.RowDefinitions>
-			<RowDefinition Height="Auto" />
-			<RowDefinition Height="*" />
-			<RowDefinition Height="23" />
-		</Grid.RowDefinitions>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="23" />
+        </Grid.RowDefinitions>
 
-		<Border Grid.Row="0"
+        <Border Grid.Row="0"
 				controls:MetroWindow.IsCaptionBar="True">
-			<Grid>
-				<Grid.ColumnDefinitions>
-					<ColumnDefinition Width="Auto" />
-					<ColumnDefinition Width="*" />
-					<ColumnDefinition Width="Auto" />
-				</Grid.ColumnDefinitions>
-				<controls:CaptionIcon Grid.Column="0">
-					<!--<Ellipse Width="18"
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+                <controls:CaptionIcon Grid.Column="0">
+                    <!--<Ellipse Width="18"
 							 Height="18"
 							 Fill="{DynamicResource ActiveForegroundBrushKey}" />-->
-				</controls:CaptionIcon>
-				<TextBlock Grid.Column="1"
-						   Text="Ruminoid"
-						   TextTrimming="CharacterEllipsis"
-						   Foreground="{DynamicResource ForegroundBrushKey}"
-						   FontFamily="Segoe UI Light"
-						   FontSize="18"
-						   Margin="3,0,0,0"
-						   VerticalAlignment="Center" />
-				<controls:SystemButtons Grid.Column="2"
+                </controls:CaptionIcon>
+                <controls:SystemButtons Grid.Column="2"
 										VerticalAlignment="Top" />
-			</Grid>
-		</Border>
+            </Grid>
+        </Border>
 
-        <TabControl Grid.Row="1"/>
+        <TabControl Grid.Row="1" Style="{DynamicResource DashboardTabControlStyle}">
+            <TabItem Header="应用" Style="{DynamicResource DashboardTabItemStyle}">
+                <Grid></Grid>
+            </TabItem>
+            <TabItem Header="设置" Style="{DynamicResource DashboardTabItemStyle}">
+                <Grid></Grid>
+            </TabItem>
+        </TabControl>
 
-		<Grid Grid.Row="2"
+        <Grid Grid.Row="2"
 			  Background="{DynamicResource AccentBrushKey}">
-			<Grid.ColumnDefinitions>
-				<ColumnDefinition Width="*" />
-				<ColumnDefinition Width="Auto" />
-			</Grid.ColumnDefinitions>
-			<controls:ResizeGrip Grid.Column="1" />
-		</Grid>
-	</Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+            <controls:ResizeGrip Grid.Column="1" />
+        </Grid>
+    </Grid>
 </controls:MetroWindow>
