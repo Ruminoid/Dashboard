@@ -23,6 +23,7 @@ namespace Ruminoid.Dashboard.Models
             {
                 id = value;
                 OnPropertyChanged();
+                OnPropertyChanged(nameof(Logo));
             }
         }
 
