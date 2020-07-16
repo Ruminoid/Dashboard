@@ -6,6 +6,7 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Serialization;
+using Ruminoid.Common.Helpers;
 
 namespace Ruminoid.Dashboard.Models
 {
@@ -60,6 +61,8 @@ namespace Ruminoid.Dashboard.Models
                 OnPropertyChanged();
             }
         }
+
+        public string Logo => LogoHelper.GetLogoPath(id);
 
         #endregion
 
