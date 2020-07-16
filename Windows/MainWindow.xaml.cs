@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,6 +15,8 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Ruminoid.Common.Helpers;
+using Ruminoid.Dashboard.Models;
+using Path = System.IO.Path;
 
 namespace Ruminoid.Dashboard.Windows
 {
@@ -50,5 +53,12 @@ namespace Ruminoid.Dashboard.Windows
         }
 
         #endregion
+
+        private void ProductButtonBase_OnClick(object sender, RoutedEventArgs e)
+        {
+            Button button = sender as Button;
+            if (!(button?.Tag is Product product)) return;
+            Process.Start(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, $"Ruminoid.{product.Id}.exe"));
+        }
     }
 }

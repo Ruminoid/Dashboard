@@ -92,7 +92,7 @@
                                             </ListView.ItemContainerStyle>
                                             <ListView.ItemTemplate>
                                                 <DataTemplate>
-                                                    <Button>
+                                                    <Button Tag="{Binding}" Click="ProductButtonBase_OnClick">
                                                         <Grid Width="350" Height="120">
                                                             <Grid.ColumnDefinitions>
                                                                 <ColumnDefinition Width="Auto"/>
