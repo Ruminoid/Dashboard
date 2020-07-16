@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.IO;
 using System.Linq;
@@ -46,7 +47,7 @@ namespace Ruminoid.Dashboard.Helpers
                     XmlDocument xmlDocument = new XmlDocument();
                     xmlDocument.Load(fs);
                     XmlNode prod = xmlDocument.SelectSingleNode("/configuration/product");
-                    productHelper.ProductDictionary.Add(product, new Product
+                    productHelper.ProductList.Add(new Product
                     {
                         Category = prod?.SelectSingleNode("category")?.InnerText,
                         Description = prod?.SelectSingleNode("description")?.InnerText,
@@ -71,7 +72,26 @@ namespace Ruminoid.Dashboard.Helpers
 
         #region DataContext
 
-        public Dictionary<string, Product> ProductDictionary { get; } = new Dictionary<string, Product>();
+        public Collection<Product> ProductList { get; } = new Collection<Product>();
+
+        #endregion
+
+        #region Utilities
+
+        public Dictionary<string, Collection<Product>> DisplayProductList
+        {
+            get
+            {
+                Dictionary<string, Collection<Product>> result = new Dictionary<string, Collection<Product>>();
+                foreach (Product product in ProductList)
+                {
+                    if (!result.ContainsKey(product.Category)) result.Add(product.Category, new Collection<Product>());
+                    result[product.Category].Add(product);
+                }
+
+                return result;
+            }
+        }
 
         #endregion
 
