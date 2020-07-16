@@ -14,6 +14,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Windows.Threading;
 using Ruminoid.Common.Helpers;
 using Ruminoid.Dashboard.Models;
 using Path = System.IO.Path;
@@ -58,7 +59,13 @@ namespace Ruminoid.Dashboard.Windows
         {
             Button button = sender as Button;
             if (!(button?.Tag is Product product)) return;
+            button.IsEnabled = false;
             Process.Start(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, $"Ruminoid.{product.Id}.exe"));
+            _ = new DispatcherTimer(
+                TimeSpan.FromSeconds(2),
+                DispatcherPriority.Normal,
+                (o, args) => button.IsEnabled = true,
+                Dispatcher.CurrentDispatcher);
         }
     }
 }
