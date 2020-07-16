@@ -17,6 +17,7 @@
         TextOptions.TextFormattingMode="Display"
         SnapsToDevicePixels="True" Height="720" Width="1280"
         Title="Ruminoid"
+        Icon="../Assets/Icon.ico"
         WindowStartupLocation="CenterScreen"
         Name="RootElement">
 
@@ -56,7 +57,17 @@
                 <RowDefinition/>
             </Grid.RowDefinitions>
             <Grid Grid.Row="0">
-                <Image/>
+                <Grid HorizontalAlignment="Center">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <Image Grid.Column="0" Source="../Assets/Logo.png"
+                           Width="150" Height="150"/>
+                    <TextBlock Grid.Column="1" VerticalAlignment="Center"
+                               Text="Ruminoid" FontSize="48"
+                               FontWeight="Light" Margin="12,0,0,0"/>
+                </Grid>
             </Grid>
             <TabControl Grid.Row="1" Style="{DynamicResource DashboardTabControlStyle}">
                 <TabItem Header="应用" Style="{DynamicResource DashboardTabItemStyle}">
