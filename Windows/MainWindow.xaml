@@ -22,27 +22,6 @@
                       WindowStartupLocation="CenterScreen"
                       Name="RootElement">
 
-    <controls:MetroWindow.Resources>
-        <Style x:Key="UpdateButtonStyle" TargetType="Button" BasedOn="{StaticResource {x:Type Button}}">
-            <!--Static Properties-->
-            <Setter Property="Width" Value="90" />
-            <Setter Property="Height" Value="90" />
-            <Setter Property="Content">
-                <Setter.Value>
-                    <visualIcon:Icon Size="2.5">
-                        <visualIcon:Icon.Style>
-                            <Style TargetType="visualIcon:Icon">
-                                <Setter Property="Type" Value="UpdateDatabaseFail" />
-                            </Style>
-                        </visualIcon:Icon.Style>
-                    </visualIcon:Icon>
-                </Setter.Value>
-            </Setter>
-            <!--Default Properties-->
-            <Setter Property="IsEnabled" Value="False" />
-        </Style>
-    </controls:MetroWindow.Resources>
-
     <chrome:WindowChrome.Instance>
         <chrome:WindowChrome />
     </chrome:WindowChrome.Instance>
