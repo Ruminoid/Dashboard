@@ -198,6 +198,7 @@
                                                  xmlns:config="clr-namespace:Ruminoid.Dashboard"
                                                  DataContext="{x:Static config:Config.Current}"
                                                  IsEnabled="{Binding IsChecked, ElementName=UpdateChannelLock}"
+                                                 Click="UpdateChannelButtonBase_OnClick"
                                                  Foreground="White">
                                         <RadioButton.Style>
                                             <Style TargetType="RadioButton">
@@ -215,6 +216,7 @@
                                                  xmlns:config="clr-namespace:Ruminoid.Dashboard"
                                                  DataContext="{x:Static config:Config.Current}"
                                                  IsEnabled="{Binding IsChecked, ElementName=UpdateChannelLock}"
+                                                 Click="UpdateChannelButtonBase_OnClick"
                                                  Foreground="White">
                                         <RadioButton.Style>
                                             <Style TargetType="RadioButton">
@@ -232,6 +234,7 @@
                                                  xmlns:config="clr-namespace:Ruminoid.Dashboard"
                                                  DataContext="{x:Static config:Config.Current}"
                                                  IsEnabled="{Binding IsChecked, ElementName=UpdateChannelLock}"
+                                                 Click="UpdateChannelButtonBase_OnClick"
                                                  Foreground="White">
                                         <RadioButton.Style>
                                             <Style TargetType="RadioButton">

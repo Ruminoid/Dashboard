@@ -87,6 +87,8 @@ namespace Ruminoid.Dashboard.Windows
 
         #endregion
 
+        #region Event Processors
+
         private void ProductButtonBase_OnClick(object sender, RoutedEventArgs e)
         {
             Button button = sender as Button;
@@ -99,5 +101,24 @@ namespace Ruminoid.Dashboard.Windows
                 (o, args) => button.IsEnabled = true,
                 Dispatcher.CurrentDispatcher);
         }
+
+        private void UpdateChannelButtonBase_OnClick(object sender, RoutedEventArgs e)
+        {
+            RadioButton button = sender as RadioButton;
+            switch (button?.Tag as string)
+            {
+                case "stable":
+                    Config.Current.UpdateChannel = "stable";
+                    break;
+                case "beta":
+                    Config.Current.UpdateChannel = "beta";
+                    break;
+                case "others":
+                    Config.Current.UpdateChannel = "";
+                    break;
+            }
+        }
+
+        #endregion
     }
 }
