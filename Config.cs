@@ -39,7 +39,19 @@ namespace Ruminoid.Dashboard
 
         #region Update
 
-        [JsonProperty] private string updateChannel = "";
+        [JsonProperty] private string updateServer = "https://ruminoid.vbox.moe/res/ruminoid/releases/";
+
+        public string UpdateServer
+        {
+            get => updateServer;
+            set
+            {
+                updateServer = value;
+                OnPropertyChanged();
+            }
+        }
+
+        [JsonProperty] private string updateChannel = "stable";
 
         public string UpdateChannel
         {
