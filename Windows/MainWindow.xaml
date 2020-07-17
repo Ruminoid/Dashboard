@@ -172,7 +172,27 @@
                                         <ColumnDefinition />
                                     </Grid.ColumnDefinitions>
                                     <Button Grid.Column="0" Style="{DynamicResource UpdateButtonStyle}" />
-                                    <TextBlock Grid.Column="1" Style="{DynamicResource UpdateTextBlockStyle}"/>
+                                    <StackPanel Grid.Column="1" Margin="12,0,0,0">
+                                        <TextBlock Margin="0,0,0,12" Style="{DynamicResource UpdateTextBlockStyle}"/>
+                                        <ProgressBar Value="{Binding UpdateProgress}">
+                                            <ProgressBar.Style>
+                                                <Style TargetType="ProgressBar">
+                                                    <Setter Property="Visibility" Value="Collapsed"/>
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding UpdateMode}" Value="search">
+                                                            <Setter Property="Visibility" Value="Visible"/>
+                                                        </DataTrigger>
+                                                        <DataTrigger Binding="{Binding UpdateMode}" Value="down">
+                                                            <Setter Property="Visibility" Value="Visible"/>
+                                                        </DataTrigger>
+                                                        <DataTrigger Binding="{Binding UpdateMode}" Value="inst">
+                                                            <Setter Property="Visibility" Value="Visible"/>
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </ProgressBar.Style>
+                                        </ProgressBar>
+                                    </StackPanel>
                                 </Grid>
                                 <TextBlock Text="服务" Margin="0,0,0,12" />
                                 <StackPanel Margin="0,0,0,24">
