@@ -174,7 +174,7 @@
                                 <TextBlock>
                                     <TextBlock.Style>
                                         <Style TargetType="TextBlock">
-                                            <Setter Property="Text" Value="点按锁按钮以进行更改。" />
+                                            <Setter Property="Text" Value="点按锁按钮以进行修改。" />
                                             <Style.Triggers>
                                                 <DataTrigger
                                                     Binding="{Binding IsChecked, ElementName=UpdateServerLock}"
@@ -197,6 +197,7 @@
                                     <RadioButton Grid.Column="0" Content="正式版" Tag="stable"
                                                  xmlns:config="clr-namespace:Ruminoid.Dashboard"
                                                  DataContext="{x:Static config:Config.Current}"
+                                                 IsEnabled="{Binding IsChecked, ElementName=UpdateChannelLock}"
                                                  Foreground="White">
                                         <RadioButton.Style>
                                             <Style TargetType="RadioButton">
@@ -213,6 +214,7 @@
                                     <RadioButton Grid.Column="1" Content="预览版" Tag="beta"
                                                  xmlns:config="clr-namespace:Ruminoid.Dashboard"
                                                  DataContext="{x:Static config:Config.Current}"
+                                                 IsEnabled="{Binding IsChecked, ElementName=UpdateChannelLock}"
                                                  Foreground="White">
                                         <RadioButton.Style>
                                             <Style TargetType="RadioButton">
@@ -229,6 +231,7 @@
                                     <RadioButton Grid.Column="2" Content="自定义" Tag="others"
                                                  xmlns:config="clr-namespace:Ruminoid.Dashboard"
                                                  DataContext="{x:Static config:Config.Current}"
+                                                 IsEnabled="{Binding IsChecked, ElementName=UpdateChannelLock}"
                                                  Foreground="White">
                                         <RadioButton.Style>
                                             <Style TargetType="RadioButton">
@@ -265,7 +268,7 @@
                                 <TextBlock>
                                     <TextBlock.Style>
                                         <Style TargetType="TextBlock">
-                                            <Setter Property="Text" Value="点按锁按钮以进行更改。" />
+                                            <Setter Property="Text" Value="点按锁按钮以进行修改。" />
                                             <Style.Triggers>
                                                 <DataTrigger
                                                     Binding="{Binding IsChecked, ElementName=UpdateChannelLock}"
