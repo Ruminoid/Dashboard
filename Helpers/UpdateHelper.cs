@@ -69,7 +69,7 @@ namespace Ruminoid.Dashboard.Helpers
         /// <summary>
         /// The Update Mode.
         /// Possible values:
-        /// ready | down | inst | restart
+        /// ready | search | down | inst | restart
         /// </summary>
         public string UpdateMode
         {
