@@ -19,4 +19,13 @@
         <!--Default Properties-->
         <Setter Property="IsEnabled" Value="False" />
     </Style>
+
+    <Style x:Key="UpdateTextBlockStyle" TargetType="TextBlock">
+        <!--Static Properties-->
+        <Setter Property="Margin" Value="12,0,0,0"/>
+        <Setter Property="TextWrapping" Value="Wrap"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+        <!--Default Properties-->
+        <Setter Property="Text" Value="更新服务出现问题。" />
+    </Style>
 </ResourceDictionary>

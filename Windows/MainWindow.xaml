@@ -171,7 +171,8 @@
                                         <ColumnDefinition Width="Auto" />
                                         <ColumnDefinition />
                                     </Grid.ColumnDefinitions>
-                                    <Button Style="{DynamicResource UpdateButtonStyle}" />
+                                    <Button Grid.Column="0" Style="{DynamicResource UpdateButtonStyle}" />
+                                    <TextBlock Grid.Column="1" Style="{DynamicResource UpdateTextBlockStyle}"/>
                                 </Grid>
                                 <TextBlock Text="服务" Margin="0,0,0,12" />
                                 <StackPanel Margin="0,0,0,24">
@@ -308,9 +309,10 @@
                                 <TextBlock Text="Ruminoid（ルミノイド）" FontSize="18" FontWeight="Bold" Margin="0,0,0,24" />
                                 <TextBlock Text="{Binding AppVersion, ElementName=RootElement}" Margin="0,0,0,24" />
                                 <TextBlock Text="Ruminoid, R/Connect, Ruminoid World等其他一切Ruminoid产品均属于Ruminoid的子产品。"
-                                           Margin="0,0,0,24" />
-                                <TextBlock Text="© 2020 Il Harper。保留所有权利。" Margin="0,0,0,24" />
-                                <TextBlock Text="Ruminoid产品的开源项目中所使用的一切第三方项目之权利均归其所有者所有。" Margin="0,0,0,24" />
+                                           Margin="0,0,0,24" TextWrapping="Wrap" />
+                                <TextBlock Text="© 2020 Il Harper。保留所有权利。" Margin="0,0,0,24" TextWrapping="Wrap" />
+                                <TextBlock Text="Ruminoid产品的开源项目中所使用的一切第三方项目之权利均归其所有者所有。"
+                                           Margin="0,0,0,24" TextWrapping="Wrap" />
                             </StackPanel>
                         </Grid>
                     </Grid>
