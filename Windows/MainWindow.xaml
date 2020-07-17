@@ -37,13 +37,6 @@
 
         <Border Grid.Row="0" Name="WndIn">
             <Grid>
-                <!--<controls:CaptionIcon Grid.Column="0">
-                    -->
-                <!--<Ellipse Width="18"
-							 Height="18"
-							 Fill="{DynamicResource ActiveForegroundBrushKey}" />-->
-                <!--
-                </controls:CaptionIcon>-->
                 <Grid>
                     <Grid HorizontalAlignment="Center">
                         <Grid.ColumnDefinitions>
@@ -57,7 +50,7 @@
                                    FontWeight="Light" Margin="12,0,0,0" />
                     </Grid>
                 </Grid>
-                <controls:SystemButtons Grid.Column="2" Name="WndOut"
+                <controls:SystemButtons Name="WndOut"
                                         VerticalAlignment="Top" HorizontalAlignment="Right" />
             </Grid>
         </Border>
@@ -172,24 +165,25 @@
                                         <ColumnDefinition />
                                     </Grid.ColumnDefinitions>
                                     <Button Grid.Column="0" Style="{DynamicResource UpdateButtonStyle}"
-                                            Click="UpdateButtonBase_OnClick"/>
+                                            Click="UpdateButtonBase_OnClick" />
                                     <StackPanel Grid.Column="1" Margin="12,0,0,0" VerticalAlignment="Center">
-                                        <TextBlock Margin="0,0,0,12" Style="{DynamicResource UpdateTextBlockStyle}"/>
+                                        <TextBlock Margin="0,0,0,12" Style="{DynamicResource UpdateTextBlockStyle}" />
                                         <ProgressBar Value="{Binding UpdateProgress}" Height="20"
-                                                     Background="Transparent" BorderBrush="{DynamicResource BorderBrushKey}"
+                                                     Background="Transparent"
+                                                     BorderBrush="{DynamicResource BorderBrushKey}"
                                                      Foreground="#FFCCCCCC">
                                             <ProgressBar.Style>
                                                 <Style TargetType="ProgressBar">
-                                                    <Setter Property="Visibility" Value="Collapsed"/>
+                                                    <Setter Property="Visibility" Value="Collapsed" />
                                                     <Style.Triggers>
                                                         <DataTrigger Binding="{Binding UpdateMode}" Value="search">
-                                                            <Setter Property="Visibility" Value="Visible"/>
+                                                            <Setter Property="Visibility" Value="Visible" />
                                                         </DataTrigger>
                                                         <DataTrigger Binding="{Binding UpdateMode}" Value="down">
-                                                            <Setter Property="Visibility" Value="Visible"/>
+                                                            <Setter Property="Visibility" Value="Visible" />
                                                         </DataTrigger>
                                                         <DataTrigger Binding="{Binding UpdateMode}" Value="inst">
-                                                            <Setter Property="Visibility" Value="Visible"/>
+                                                            <Setter Property="Visibility" Value="Visible" />
                                                         </DataTrigger>
                                                     </Style.Triggers>
                                                 </Style>
