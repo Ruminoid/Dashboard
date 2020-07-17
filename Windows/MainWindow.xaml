@@ -22,6 +22,27 @@
                       WindowStartupLocation="CenterScreen"
                       Name="RootElement">
 
+    <controls:MetroWindow.Resources>
+        <Style x:Key="UpdateButtonStyle" TargetType="Button" BasedOn="{StaticResource {x:Type Button}}">
+            <!--Static Properties-->
+            <Setter Property="Width" Value="90" />
+            <Setter Property="Height" Value="90" />
+            <Setter Property="Content">
+                <Setter.Value>
+                    <visualIcon:Icon Size="2.5">
+                        <visualIcon:Icon.Style>
+                            <Style TargetType="visualIcon:Icon">
+                                <Setter Property="Type" Value="UpdateDatabaseFail" />
+                            </Style>
+                        </visualIcon:Icon.Style>
+                    </visualIcon:Icon>
+                </Setter.Value>
+            </Setter>
+            <!--Default Properties-->
+            <Setter Property="IsEnabled" Value="False" />
+        </Style>
+    </controls:MetroWindow.Resources>
+
     <chrome:WindowChrome.Instance>
         <chrome:WindowChrome />
     </chrome:WindowChrome.Instance>
@@ -64,236 +85,258 @@
 
         <TabControl Grid.Row="1" Style="{DynamicResource DashboardTabControlStyle}">
             <TabItem Header="应用" Style="{DynamicResource DashboardTabItemStyle}">
-                <Grid>
-                    <ListView Margin="24" Background="Transparent" BorderBrush="Transparent"
-                              Foreground="White"
-                              xmlns:prods="clr-namespace:Ruminoid.Dashboard.Helpers"
-                              DataContext="{x:Static prods:ProductHelper.Current}"
-                              ItemsSource="{Binding DisplayProductList}"
-                              HorizontalContentAlignment="Stretch"
-                              SelectionMode="Single">
-                        <ListView.ItemContainerStyle>
-                            <Style TargetType="ListViewItem">
-                                <Setter Property="Focusable" Value="false" />
-                            </Style>
-                        </ListView.ItemContainerStyle>
-                        <ListView.ItemTemplate>
-                            <DataTemplate>
-                                <Grid Margin="12">
-                                    <Grid.RowDefinitions>
-                                        <RowDefinition Height="Auto" />
-                                        <RowDefinition />
-                                    </Grid.RowDefinitions>
-                                    <Grid Grid.Row="0" Margin="0,12">
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="Auto" />
-                                            <ColumnDefinition />
-                                        </Grid.ColumnDefinitions>
-                                        <TextBlock Grid.Column="0" Text="{Binding Key}" />
-                                        <Grid Grid.Column="1" Background="White" Height="1"
-                                              Margin="18,0,0,0" Opacity="0.2" />
-                                    </Grid>
-                                    <Grid Grid.Row="1" Margin="0,12">
-                                        <ListView Background="Transparent" BorderBrush="Transparent"
-                                                  ItemsSource="{Binding Value}"
-                                                  SelectionMode="Single">
-                                            <ListView.ItemContainerStyle>
-                                                <Style TargetType="ListViewItem">
-                                                    <Setter Property="Focusable" Value="false" />
-                                                </Style>
-                                            </ListView.ItemContainerStyle>
-                                            <ListView.ItemTemplate>
-                                                <DataTemplate>
-                                                    <Button Tag="{Binding}" Click="ProductButtonBase_OnClick">
-                                                        <Grid Width="350" Height="120">
-                                                            <Grid.ColumnDefinitions>
-                                                                <ColumnDefinition Width="Auto" />
-                                                                <ColumnDefinition />
-                                                            </Grid.ColumnDefinitions>
-                                                            <Image Grid.Column="0" Source="{Binding Logo}"
-                                                                   Height="114" Width="114"
-                                                                   HorizontalAlignment="Center"
-                                                                   Stretch="Uniform" VerticalAlignment="Center" />
-                                                            <Grid Grid.Column="1" VerticalAlignment="Center">
-                                                                <Grid.RowDefinitions>
-                                                                    <RowDefinition Height="Auto" />
-                                                                    <RowDefinition />
-                                                                </Grid.RowDefinitions>
-                                                                <TextBlock Grid.Row="0" Text="{Binding Title}"
-                                                                           Margin="0,0,0,12"
-                                                                           FontSize="24" />
-                                                                <TextBlock Grid.Row="1" Text="{Binding Description}"
-                                                                           Margin="0,0,0,6"
-                                                                           TextWrapping="Wrap" />
+                <ScrollViewer HorizontalScrollBarVisibility="Hidden"
+                              VerticalScrollBarVisibility="Auto">
+                    <Grid>
+                        <ListView Margin="24" Background="Transparent" BorderBrush="Transparent"
+                                  Foreground="White"
+                                  xmlns:prods="clr-namespace:Ruminoid.Dashboard.Helpers"
+                                  DataContext="{x:Static prods:ProductHelper.Current}"
+                                  ItemsSource="{Binding DisplayProductList}"
+                                  HorizontalContentAlignment="Stretch"
+                                  SelectionMode="Single">
+                            <ListView.ItemContainerStyle>
+                                <Style TargetType="ListViewItem">
+                                    <Setter Property="Focusable" Value="false" />
+                                </Style>
+                            </ListView.ItemContainerStyle>
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <Grid Margin="12">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="Auto" />
+                                            <RowDefinition />
+                                        </Grid.RowDefinitions>
+                                        <Grid Grid.Row="0" Margin="0,12">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="Auto" />
+                                                <ColumnDefinition />
+                                            </Grid.ColumnDefinitions>
+                                            <TextBlock Grid.Column="0" Text="{Binding Key}" />
+                                            <Grid Grid.Column="1" Background="White" Height="1"
+                                                  Margin="18,0,0,0" Opacity="0.2" />
+                                        </Grid>
+                                        <Grid Grid.Row="1" Margin="0,12">
+                                            <ListView Background="Transparent" BorderBrush="Transparent"
+                                                      ItemsSource="{Binding Value}"
+                                                      SelectionMode="Single">
+                                                <ListView.ItemContainerStyle>
+                                                    <Style TargetType="ListViewItem">
+                                                        <Setter Property="Focusable" Value="false" />
+                                                    </Style>
+                                                </ListView.ItemContainerStyle>
+                                                <ListView.ItemTemplate>
+                                                    <DataTemplate>
+                                                        <Button Tag="{Binding}" Click="ProductButtonBase_OnClick">
+                                                            <Grid Width="350" Height="120">
+                                                                <Grid.ColumnDefinitions>
+                                                                    <ColumnDefinition Width="Auto" />
+                                                                    <ColumnDefinition />
+                                                                </Grid.ColumnDefinitions>
+                                                                <Image Grid.Column="0" Source="{Binding Logo}"
+                                                                       Height="114" Width="114"
+                                                                       HorizontalAlignment="Center"
+                                                                       Stretch="Uniform" VerticalAlignment="Center" />
+                                                                <Grid Grid.Column="1" VerticalAlignment="Center">
+                                                                    <Grid.RowDefinitions>
+                                                                        <RowDefinition Height="Auto" />
+                                                                        <RowDefinition />
+                                                                    </Grid.RowDefinitions>
+                                                                    <TextBlock Grid.Row="0" Text="{Binding Title}"
+                                                                               Margin="0,0,0,12"
+                                                                               FontSize="24" />
+                                                                    <TextBlock Grid.Row="1"
+                                                                               Text="{Binding Description}"
+                                                                               Margin="0,0,0,6"
+                                                                               TextWrapping="Wrap" />
+                                                                </Grid>
                                                             </Grid>
-                                                        </Grid>
-                                                    </Button>
-                                                </DataTemplate>
-                                            </ListView.ItemTemplate>
-                                        </ListView>
+                                                        </Button>
+                                                    </DataTemplate>
+                                                </ListView.ItemTemplate>
+                                            </ListView>
+                                        </Grid>
                                     </Grid>
-                                </Grid>
-                            </DataTemplate>
-                        </ListView.ItemTemplate>
-                    </ListView>
-                </Grid>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+                    </Grid>
+                </ScrollViewer>
             </TabItem>
             <TabItem Header="连接" Style="{DynamicResource DashboardTabItemStyle}">
-                <Grid>
-                    <Grid Margin="24">
-                        <TextBlock Text="R/Connect 不可用。" />
+                <ScrollViewer HorizontalScrollBarVisibility="Hidden"
+                              VerticalScrollBarVisibility="Auto">
+                    <Grid>
+                        <Grid Margin="24">
+                            <TextBlock Text="R/Connect 不可用。" />
+                        </Grid>
                     </Grid>
-                </Grid>
+                </ScrollViewer>
             </TabItem>
             <TabItem Header="设置" Style="{DynamicResource DashboardTabItemStyle}">
-                <Grid>
-                    <Grid Margin="36,24">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition />
-                            <ColumnDefinition />
-                        </Grid.ColumnDefinitions>
-                        <StackPanel Grid.Column="0" Margin="24,0">
-                            <TextBlock Text="更新" Style="{DynamicResource ShellTitleTextStyle}" Margin="0,0,0,24" />
-                            <TextBlock Text="服务" Margin="0,0,0,12" />
-                            <StackPanel Margin="0,0,0,24">
-                                <Grid Margin="0,0,0,12">
+                <ScrollViewer HorizontalScrollBarVisibility="Hidden"
+                              VerticalScrollBarVisibility="Auto">
+                    <Grid>
+                        <Grid Margin="36,24">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition />
+                                <ColumnDefinition />
+                            </Grid.ColumnDefinitions>
+                            <StackPanel Grid.Column="0" Margin="24,0"
+                                        xmlns:helpers="clr-namespace:Ruminoid.Dashboard.Helpers"
+                                        DataContext="{x:Static helpers:UpdateHelper.Current}">
+                                <TextBlock Text="更新" Style="{DynamicResource ShellTitleTextStyle}" Margin="0,0,0,24" />
+                                <TextBlock Text="状态" Margin="0,0,0,24" />
+                                <Grid Margin="0,0,0,24">
                                     <Grid.ColumnDefinitions>
-                                        <ColumnDefinition />
                                         <ColumnDefinition Width="Auto" />
+                                        <ColumnDefinition />
                                     </Grid.ColumnDefinitions>
-                                    <TextBox Grid.Column="0"
-                                             IsEnabled="{Binding IsChecked, ElementName=UpdateServerLock}"
-                                             xmlns:config="clr-namespace:Ruminoid.Dashboard"
-                                             DataContext="{x:Static config:Config.Current}"
-                                             Text="{Binding UpdateServer, UpdateSourceTrigger=PropertyChanged}"
-                                             VerticalAlignment="Center" Margin="0,0,12,0"
-                                             Background="Transparent" Foreground="White"/>
-                                    <ToggleButton Name="UpdateServerLock" Grid.Column="1"
-                                                  Style="{DynamicResource LockToggleButtonStyle}" />
+                                    <Button Width="90" Height="90"
+                                            Style="{DynamicResource UpdateButtonStyle}" />
                                 </Grid>
-                                <TextBlock>
-                                    <TextBlock.Style>
-                                        <Style TargetType="TextBlock">
-                                            <Setter Property="Text" Value="点按锁按钮以进行修改。" />
-                                            <Style.Triggers>
-                                                <DataTrigger
-                                                    Binding="{Binding IsChecked, ElementName=UpdateServerLock}"
-                                                    Value="true">
-                                                    <Setter Property="Text" Value="请确保您清楚您在做什么。地址需要以斜杠结尾。" />
-                                                </DataTrigger>
-                                            </Style.Triggers>
-                                        </Style>
-                                    </TextBlock.Style>
-                                </TextBlock>
+                                <TextBlock Text="服务" Margin="0,0,0,12" />
+                                <StackPanel Margin="0,0,0,24">
+                                    <Grid Margin="0,0,0,12">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition />
+                                            <ColumnDefinition Width="Auto" />
+                                        </Grid.ColumnDefinitions>
+                                        <TextBox Grid.Column="0"
+                                                 IsEnabled="{Binding IsChecked, ElementName=UpdateServerLock}"
+                                                 xmlns:config="clr-namespace:Ruminoid.Dashboard"
+                                                 DataContext="{x:Static config:Config.Current}"
+                                                 Text="{Binding UpdateServer, UpdateSourceTrigger=PropertyChanged}"
+                                                 VerticalAlignment="Center" Margin="0,0,12,0"
+                                                 Background="Transparent" Foreground="White" />
+                                        <ToggleButton Name="UpdateServerLock" Grid.Column="1"
+                                                      Style="{DynamicResource LockToggleButtonStyle}" />
+                                    </Grid>
+                                    <TextBlock>
+                                        <TextBlock.Style>
+                                            <Style TargetType="TextBlock">
+                                                <Setter Property="Text" Value="点按锁按钮以进行修改。" />
+                                                <Style.Triggers>
+                                                    <DataTrigger
+                                                        Binding="{Binding IsChecked, ElementName=UpdateServerLock}"
+                                                        Value="true">
+                                                        <Setter Property="Text" Value="请确保您清楚您在做什么。地址需要以斜杠结尾。" />
+                                                    </DataTrigger>
+                                                </Style.Triggers>
+                                            </Style>
+                                        </TextBlock.Style>
+                                    </TextBlock>
+                                </StackPanel>
+                                <TextBlock Text="通道" Margin="0,0,0,12" />
+                                <StackPanel Margin="0,0,0,24">
+                                    <Grid Margin="0,0,0,12">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition />
+                                            <ColumnDefinition />
+                                            <ColumnDefinition />
+                                        </Grid.ColumnDefinitions>
+                                        <RadioButton Grid.Column="0" Content="正式版" Tag="stable"
+                                                     xmlns:config="clr-namespace:Ruminoid.Dashboard"
+                                                     DataContext="{x:Static config:Config.Current}"
+                                                     IsEnabled="{Binding IsChecked, ElementName=UpdateChannelLock}"
+                                                     Click="UpdateChannelButtonBase_OnClick"
+                                                     Foreground="White">
+                                            <RadioButton.Style>
+                                                <Style TargetType="RadioButton">
+                                                    <Setter Property="IsChecked" Value="False" />
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding UpdateChannel}"
+                                                                     Value="stable">
+                                                            <Setter Property="IsChecked" Value="True" />
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </RadioButton.Style>
+                                        </RadioButton>
+                                        <RadioButton Grid.Column="1" Content="预览版" Tag="beta"
+                                                     xmlns:config="clr-namespace:Ruminoid.Dashboard"
+                                                     DataContext="{x:Static config:Config.Current}"
+                                                     IsEnabled="{Binding IsChecked, ElementName=UpdateChannelLock}"
+                                                     Click="UpdateChannelButtonBase_OnClick"
+                                                     Foreground="White">
+                                            <RadioButton.Style>
+                                                <Style TargetType="RadioButton">
+                                                    <Setter Property="IsChecked" Value="False" />
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding UpdateChannel}"
+                                                                     Value="beta">
+                                                            <Setter Property="IsChecked" Value="True" />
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </RadioButton.Style>
+                                        </RadioButton>
+                                        <RadioButton Grid.Column="2" Content="自定义" Tag="others"
+                                                     xmlns:config="clr-namespace:Ruminoid.Dashboard"
+                                                     DataContext="{x:Static config:Config.Current}"
+                                                     IsEnabled="{Binding IsChecked, ElementName=UpdateChannelLock}"
+                                                     Click="UpdateChannelButtonBase_OnClick"
+                                                     Foreground="White">
+                                            <RadioButton.Style>
+                                                <Style TargetType="RadioButton">
+                                                    <Setter Property="IsChecked" Value="True" />
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding UpdateChannel}"
+                                                                     Value="stable">
+                                                            <Setter Property="IsChecked" Value="False" />
+                                                        </DataTrigger>
+                                                        <DataTrigger Binding="{Binding UpdateChannel}"
+                                                                     Value="beta">
+                                                            <Setter Property="IsChecked" Value="False" />
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </RadioButton.Style>
+                                        </RadioButton>
+                                    </Grid>
+                                    <Grid Margin="0,0,0,12">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition />
+                                            <ColumnDefinition Width="Auto" />
+                                        </Grid.ColumnDefinitions>
+                                        <TextBox Grid.Column="0"
+                                                 IsEnabled="{Binding IsChecked, ElementName=UpdateChannelLock}"
+                                                 xmlns:config="clr-namespace:Ruminoid.Dashboard"
+                                                 DataContext="{x:Static config:Config.Current}"
+                                                 Text="{Binding UpdateChannel, UpdateSourceTrigger=PropertyChanged}"
+                                                 VerticalAlignment="Center" Margin="0,0,12,0"
+                                                 Background="Transparent" Foreground="White" />
+                                        <ToggleButton Name="UpdateChannelLock" Grid.Column="1"
+                                                      Style="{DynamicResource LockToggleButtonStyle}" />
+                                    </Grid>
+                                    <TextBlock>
+                                        <TextBlock.Style>
+                                            <Style TargetType="TextBlock">
+                                                <Setter Property="Text" Value="点按锁按钮以进行修改。" />
+                                                <Style.Triggers>
+                                                    <DataTrigger
+                                                        Binding="{Binding IsChecked, ElementName=UpdateChannelLock}"
+                                                        Value="true">
+                                                        <Setter Property="Text" Value="请确保您清楚您在做什么。" />
+                                                    </DataTrigger>
+                                                </Style.Triggers>
+                                            </Style>
+                                        </TextBlock.Style>
+                                    </TextBlock>
+                                </StackPanel>
                             </StackPanel>
-                            <TextBlock Text="通道" Margin="0,0,0,12" />
-                            <StackPanel Margin="0,0,0,24">
-                                <Grid Margin="0,0,0,12">
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition />
-                                        <ColumnDefinition />
-                                        <ColumnDefinition />
-                                    </Grid.ColumnDefinitions>
-                                    <RadioButton Grid.Column="0" Content="正式版" Tag="stable"
-                                                 xmlns:config="clr-namespace:Ruminoid.Dashboard"
-                                                 DataContext="{x:Static config:Config.Current}"
-                                                 IsEnabled="{Binding IsChecked, ElementName=UpdateChannelLock}"
-                                                 Click="UpdateChannelButtonBase_OnClick"
-                                                 Foreground="White">
-                                        <RadioButton.Style>
-                                            <Style TargetType="RadioButton">
-                                                <Setter Property="IsChecked" Value="False" />
-                                                <Style.Triggers>
-                                                    <DataTrigger Binding="{Binding UpdateChannel}"
-                                                                 Value="stable">
-                                                        <Setter Property="IsChecked" Value="True" />
-                                                    </DataTrigger>
-                                                </Style.Triggers>
-                                            </Style>
-                                        </RadioButton.Style>
-                                    </RadioButton>
-                                    <RadioButton Grid.Column="1" Content="预览版" Tag="beta"
-                                                 xmlns:config="clr-namespace:Ruminoid.Dashboard"
-                                                 DataContext="{x:Static config:Config.Current}"
-                                                 IsEnabled="{Binding IsChecked, ElementName=UpdateChannelLock}"
-                                                 Click="UpdateChannelButtonBase_OnClick"
-                                                 Foreground="White">
-                                        <RadioButton.Style>
-                                            <Style TargetType="RadioButton">
-                                                <Setter Property="IsChecked" Value="False" />
-                                                <Style.Triggers>
-                                                    <DataTrigger Binding="{Binding UpdateChannel}"
-                                                                 Value="beta">
-                                                        <Setter Property="IsChecked" Value="True" />
-                                                    </DataTrigger>
-                                                </Style.Triggers>
-                                            </Style>
-                                        </RadioButton.Style>
-                                    </RadioButton>
-                                    <RadioButton Grid.Column="2" Content="自定义" Tag="others"
-                                                 xmlns:config="clr-namespace:Ruminoid.Dashboard"
-                                                 DataContext="{x:Static config:Config.Current}"
-                                                 IsEnabled="{Binding IsChecked, ElementName=UpdateChannelLock}"
-                                                 Click="UpdateChannelButtonBase_OnClick"
-                                                 Foreground="White">
-                                        <RadioButton.Style>
-                                            <Style TargetType="RadioButton">
-                                                <Setter Property="IsChecked" Value="True" />
-                                                <Style.Triggers>
-                                                    <DataTrigger Binding="{Binding UpdateChannel}"
-                                                                 Value="stable">
-                                                        <Setter Property="IsChecked" Value="False" />
-                                                    </DataTrigger>
-                                                    <DataTrigger Binding="{Binding UpdateChannel}"
-                                                                 Value="beta">
-                                                        <Setter Property="IsChecked" Value="False" />
-                                                    </DataTrigger>
-                                                </Style.Triggers>
-                                            </Style>
-                                        </RadioButton.Style>
-                                    </RadioButton>
-                                </Grid>
-                                <Grid Margin="0,0,0,12">
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition />
-                                        <ColumnDefinition Width="Auto" />
-                                    </Grid.ColumnDefinitions>
-                                    <TextBox Grid.Column="0"
-                                             IsEnabled="{Binding IsChecked, ElementName=UpdateChannelLock}"
-                                             xmlns:config="clr-namespace:Ruminoid.Dashboard"
-                                             DataContext="{x:Static config:Config.Current}"
-                                             Text="{Binding UpdateChannel, UpdateSourceTrigger=PropertyChanged}"
-                                             VerticalAlignment="Center" Margin="0,0,12,0"
-                                             Background="Transparent" Foreground="White" />
-                                    <ToggleButton Name="UpdateChannelLock" Grid.Column="1"
-                                                  Style="{DynamicResource LockToggleButtonStyle}" />
-                                </Grid>
-                                <TextBlock>
-                                    <TextBlock.Style>
-                                        <Style TargetType="TextBlock">
-                                            <Setter Property="Text" Value="点按锁按钮以进行修改。" />
-                                            <Style.Triggers>
-                                                <DataTrigger
-                                                    Binding="{Binding IsChecked, ElementName=UpdateChannelLock}"
-                                                    Value="true">
-                                                    <Setter Property="Text" Value="请确保您清楚您在做什么。" />
-                                                </DataTrigger>
-                                            </Style.Triggers>
-                                        </Style>
-                                    </TextBlock.Style>
-                                </TextBlock>
+                            <StackPanel Grid.Column="1" Margin="24,0">
+                                <TextBlock Text="关于" Style="{DynamicResource ShellTitleTextStyle}" Margin="0,0,0,24" />
+                                <TextBlock Text="Ruminoid（ルミノイド）" FontSize="18" FontWeight="Bold" Margin="0,0,0,24" />
+                                <TextBlock Text="{Binding AppVersion, ElementName=RootElement}" Margin="0,0,0,24" />
+                                <TextBlock Text="Ruminoid, R/Connect, Ruminoid World等其他一切Ruminoid产品均属于Ruminoid的子产品。"
+                                           Margin="0,0,0,24" />
+                                <TextBlock Text="© 2020 Il Harper。保留所有权利。" Margin="0,0,0,24" />
+                                <TextBlock Text="Ruminoid产品的开源项目中所使用的一切第三方项目之权利均归其所有者所有。" Margin="0,0,0,24" />
                             </StackPanel>
-                        </StackPanel>
-                        <StackPanel Grid.Column="1" Margin="24,0">
-                            <TextBlock Text="关于" Style="{DynamicResource ShellTitleTextStyle}" Margin="0,0,0,24" />
-                            <TextBlock Text="Ruminoid（ルミノイド）" FontSize="18" FontWeight="Bold" Margin="0,0,0,24" />
-                            <TextBlock Text="{Binding AppVersion, ElementName=RootElement}" Margin="0,0,0,24" />
-                            <TextBlock Text="Ruminoid, R/Connect, Ruminoid World等其他一切Ruminoid产品均属于Ruminoid的子产品。" Margin="0,0,0,24" />
-                            <TextBlock Text="© 2020 Il Harper。保留所有权利。" Margin="0,0,0,24" />
-                            <TextBlock Text="Ruminoid产品的开源项目中所使用的一切第三方项目之权利均归其所有者所有。" Margin="0,0,0,24" />
-                        </StackPanel>
+                        </Grid>
                     </Grid>
-                </Grid>
+                </ScrollViewer>
             </TabItem>
         </TabControl>
 
