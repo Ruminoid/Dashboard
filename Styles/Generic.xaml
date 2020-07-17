@@ -51,7 +51,6 @@
     <Style x:Key="UpdateTextBlockStyle" TargetType="TextBlock">
         <!--Static Properties-->
         <Setter Property="TextWrapping" Value="Wrap"/>
-        <Setter Property="VerticalAlignment" Value="Center"/>
         <!--Default Properties-->
         <Setter Property="Text" Value="更新服务出现问题。" />
         <Style.Triggers>

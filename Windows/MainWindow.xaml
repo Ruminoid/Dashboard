@@ -173,9 +173,11 @@
                                     </Grid.ColumnDefinitions>
                                     <Button Grid.Column="0" Style="{DynamicResource UpdateButtonStyle}"
                                             Click="UpdateButtonBase_OnClick"/>
-                                    <StackPanel Grid.Column="1" Margin="12,0,0,0">
+                                    <StackPanel Grid.Column="1" Margin="12,0,0,0" VerticalAlignment="Center">
                                         <TextBlock Margin="0,0,0,12" Style="{DynamicResource UpdateTextBlockStyle}"/>
-                                        <ProgressBar Value="{Binding UpdateProgress}">
+                                        <ProgressBar Value="{Binding UpdateProgress}" Height="20"
+                                                     Background="Transparent" BorderBrush="{DynamicResource BorderBrushKey}"
+                                                     Foreground="#FFCCCCCC">
                                             <ProgressBar.Style>
                                                 <Style TargetType="ProgressBar">
                                                     <Setter Property="Visibility" Value="Collapsed"/>
