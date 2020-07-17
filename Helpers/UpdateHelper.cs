@@ -1,16 +1,21 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using System.Runtime.CompilerServices;
-using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using Squirrel;
 
 namespace Ruminoid.Dashboard.Helpers
 {
     public class UpdateHelper : INotifyPropertyChanged
     {
+        #region Manager
+
+        private UpdateManager _updateManager;
+
+        #endregion
+
         #region Current
 
         public static UpdateHelper Current { get; } = InitializeUpdateHelper();
@@ -21,7 +26,6 @@ namespace Ruminoid.Dashboard.Helpers
 
         private UpdateHelper()
         {
-
         }
 
         public static UpdateHelper InitializeUpdateHelper()
@@ -34,29 +38,43 @@ namespace Ruminoid.Dashboard.Helpers
 
         #endregion
 
-        #region Manager
-
-        private UpdateManager _updateManager;
-
-        #endregion
-
         #region Processors
 
-        private void ReconstructUpdateManager()
+        private void ReconstructUpdateManager(bool triggerReady = true)
         {
             _updateManager?.Dispose();
             _updateManager = new UpdateManager(Config.Current.UpdateServer + Config.Current.UpdateChannel);
-            UpdateMode = "ready";
+            if (triggerReady) UpdateMode = "ready";
         }
 
         public void TriggerProcess()
         {
-            switch (UpdateMode)
+            if (UpdateMode != "ready" || UpdateMode != "error") return;
+            ReconstructUpdateManager(false);
+            UpdateMode = "search";
+            try
             {
-                case "ready":
-                    break;
-                case "restart":
-                    break;
+                Task.Run(async () =>
+                {
+                    UpdateInfo updateInfo = await _updateManager.CheckForUpdate(false,
+                        progress => Application.Current.Dispatcher.Invoke(() => UpdateProgress = progress));
+                    Application.Current.Dispatcher.Invoke(() => UpdateProgress = 100);
+                    if (!updateInfo.ReleasesToApply.Any())
+                    {
+                        Application.Current.Dispatcher.Invoke(() => UpdateMode = "ready");
+                        return;
+                    }
+
+                    await _updateManager.DownloadReleases(updateInfo.ReleasesToApply,
+                        progress => Application.Current.Dispatcher.Invoke(() => UpdateProgress = progress));
+
+                    await _updateManager.ApplyReleases(updateInfo,
+                        progress => Application.Current.Dispatcher.Invoke(() => UpdateProgress = progress));
+                });
+            }
+            catch (Exception)
+            {
+                UpdateMode = "error";
             }
         }
 
@@ -67,9 +85,9 @@ namespace Ruminoid.Dashboard.Helpers
         private string _updateMode = "ready";
 
         /// <summary>
-        /// The Update Mode.
-        /// Possible values:
-        /// ready | search | down | inst | restart
+        ///     The Update Mode.
+        ///     Possible values:
+        ///     ready | search | down | inst | restart | error
         /// </summary>
         public string UpdateMode
         {
@@ -77,6 +95,19 @@ namespace Ruminoid.Dashboard.Helpers
             set
             {
                 _updateMode = value;
+                UpdateProgress = 0;
+                OnPropertyChanged();
+            }
+        }
+
+        private int _updateProgress;
+
+        public int UpdateProgress
+        {
+            get => _updateProgress;
+            set
+            {
+                _updateProgress = value;
                 OnPropertyChanged();
             }
         }
