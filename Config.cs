@@ -37,6 +37,22 @@ namespace Ruminoid.Dashboard
 
         #endregion
 
+        #region Update
+
+        [JsonProperty] private string updateChannel = "";
+
+        public string UpdateChannel
+        {
+            get => updateChannel;
+            set
+            {
+                updateChannel = value;
+                OnPropertyChanged();
+            }
+        }
+
+        #endregion
+
         #region PropertyChanged
 
         public event PropertyChangedEventHandler PropertyChanged;
