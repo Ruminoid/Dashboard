@@ -7,7 +7,7 @@
         <Setter Property="Height" Value="90" />
         <Setter Property="Content">
             <Setter.Value>
-                <visualIcon:Icon Size="2.5">
+                <visualIcon:Icon Size="2.5" Margin="-12,-12,12,12">
                     <visualIcon:Icon.Style>
                         <Style TargetType="visualIcon:Icon">
                             <Setter Property="Type" Value="UpdateDatabaseFail" />
