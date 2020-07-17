@@ -49,7 +49,7 @@ namespace Ruminoid.Dashboard.Helpers
 
         public void TriggerProcess()
         {
-            if (UpdateMode != "ready" || UpdateMode != "error") return;
+            if (UpdateMode != "ready" && UpdateMode != "error") return;
             ReconstructUpdateManager(false);
             UpdateMode = "search";
             try
