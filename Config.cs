@@ -39,7 +39,7 @@ namespace Ruminoid.Dashboard
 
         #region Update
 
-        [JsonProperty] private string updateServer = "https://ruminoid.vbox.moe/res/ruminoid/releases/";
+        [JsonProperty] private string updateServer = "https://update.ruminoid.world/";
 
         public string UpdateServer
         {
