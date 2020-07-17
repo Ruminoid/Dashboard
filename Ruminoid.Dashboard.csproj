@@ -161,6 +161,9 @@
     <PackageReference Include="Ruminoid.Libraries">
       <Version>0.2.5</Version>
     </PackageReference>
+    <PackageReference Include="Squirrel.Windows">
+      <Version>1.9.1</Version>
+    </PackageReference>
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
