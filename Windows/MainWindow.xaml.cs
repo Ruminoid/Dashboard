@@ -18,6 +18,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Windows.Threading;
 using Ruminoid.Common.Helpers;
+using Ruminoid.Dashboard.Helpers;
 using Ruminoid.Dashboard.Models;
 using Path = System.IO.Path;
 
@@ -117,6 +118,11 @@ namespace Ruminoid.Dashboard.Windows
                     Config.Current.UpdateChannel = "";
                     break;
             }
+        }
+
+        private void UpdateButtonBase_OnClick(object sender, RoutedEventArgs e)
+        {
+            UpdateHelper.Current.TriggerProcess();
         }
 
         #endregion

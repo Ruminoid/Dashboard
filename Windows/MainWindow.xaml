@@ -171,7 +171,8 @@
                                         <ColumnDefinition Width="Auto" />
                                         <ColumnDefinition />
                                     </Grid.ColumnDefinitions>
-                                    <Button Grid.Column="0" Style="{DynamicResource UpdateButtonStyle}" />
+                                    <Button Grid.Column="0" Style="{DynamicResource UpdateButtonStyle}"
+                                            Click="UpdateButtonBase_OnClick"/>
                                     <StackPanel Grid.Column="1" Margin="12,0,0,0">
                                         <TextBlock Margin="0,0,0,12" Style="{DynamicResource UpdateTextBlockStyle}"/>
                                         <ProgressBar Value="{Binding UpdateProgress}">
