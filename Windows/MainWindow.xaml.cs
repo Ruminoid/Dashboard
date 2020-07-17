@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -51,6 +52,8 @@ namespace Ruminoid.Dashboard.Windows
 
         private void OnLoaded(object sender, RoutedEventArgs e)
         {
+            AppVersion = $"版本 {Assembly.GetExecutingAssembly().GetName().Version}";
+
             IntPtr hwnd = new WindowInteropHelper(this).Handle;
             HwndSource.FromHwnd(hwnd)?.AddHook(WndProc);
         }
