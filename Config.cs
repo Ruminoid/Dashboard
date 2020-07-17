@@ -12,7 +12,7 @@ namespace Ruminoid.Dashboard
 {
     [RuminoidProduct("Dashboard")]
     [JsonObject(MemberSerialization.OptIn)]
-    public class Config
+    public class Config : INotifyPropertyChanged
     {
         #region Current
 
