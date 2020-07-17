@@ -51,7 +51,13 @@ namespace Ruminoid.Dashboard.Helpers
 
         public void TriggerProcess()
         {
-
+            switch (UpdateMode)
+            {
+                case "ready":
+                    break;
+                case "restart":
+                    break;
+            }
         }
 
         #endregion
@@ -63,7 +69,7 @@ namespace Ruminoid.Dashboard.Helpers
         /// <summary>
         /// The Update Mode.
         /// Possible values:
-        /// ready | downloading | installing | requireRestart
+        /// ready | down | inst | restart
         /// </summary>
         public string UpdateMode
         {
