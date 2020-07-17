@@ -171,8 +171,7 @@
                                         <ColumnDefinition Width="Auto" />
                                         <ColumnDefinition />
                                     </Grid.ColumnDefinitions>
-                                    <Button Width="90" Height="90"
-                                            Style="{DynamicResource UpdateButtonStyle}" />
+                                    <Button Style="{DynamicResource UpdateButtonStyle}" />
                                 </Grid>
                                 <TextBlock Text="服务" Margin="0,0,0,12" />
                                 <StackPanel Margin="0,0,0,24">
