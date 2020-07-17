@@ -13,7 +13,7 @@ namespace Ruminoid.Dashboard.Helpers
     {
         #region Current
 
-        public UpdateHelper Current { get; } = InitializeUpdateHelper();
+        public static UpdateHelper Current { get; } = InitializeUpdateHelper();
 
         #endregion
 
