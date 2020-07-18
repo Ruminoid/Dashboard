@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using MetroRadiance.UI;
 using Ruminoid.Dashboard.Windows;
+using Squirrel;
 
 namespace Ruminoid.Dashboard
 {
@@ -42,6 +43,28 @@ namespace Ruminoid.Dashboard
                     MessageBoxImage.Error,
                     MessageBoxResult.OK);
             };
+
+            // SquirrelAware
+
+            using (var mgr = new UpdateManager(Config.Current.UpdateServer + Config.Current.UpdateChannel))
+            {
+                SquirrelAwareApp.HandleEvents(
+                  onInitialInstall: v =>
+                  {
+                      mgr.CreateShortcutForThisExe();
+                      Current.Shutdown(0);
+                  },
+                  onAppUpdate: v =>
+                  {
+                      mgr.CreateShortcutForThisExe();
+                      Current.Shutdown(0);
+                  },
+                  onAppUninstall: v =>
+                  {
+                      mgr.RemoveShortcutForThisExe();
+                      Current.Shutdown(0);
+                  });
+            }
 
             Dashboard.Properties.Resources.Culture = CultureInfo.CurrentUICulture;
 
