@@ -46,14 +46,28 @@ namespace Ruminoid.Dashboard.Helpers
                 {
                     XmlDocument xmlDocument = new XmlDocument();
                     xmlDocument.Load(fs);
-                    XmlNode prod = xmlDocument.SelectSingleNode("/configuration/product");
-                    productHelper.ProductList.Add(new Product
+                    XmlNode prod = xmlDocument.SelectSingleNode("/configuration/appSettings");
+                    if (prod is null) throw new Exception();
+                    Product resultProduct = new Product();
+                    foreach (XmlElement element in prod)
                     {
-                        Category = prod?.SelectSingleNode("category")?.InnerText,
-                        Description = prod?.SelectSingleNode("description")?.InnerText,
-                        Id = prod?.SelectSingleNode("id")?.InnerText,
-                        Title = prod?.SelectSingleNode("title")?.InnerText
-                    });
+                        switch (element.Attributes["key"].Value)
+                        {
+                            case "productId":
+                                resultProduct.Id = element.Attributes["value"].Value;
+                                break;
+                            case "productTitle":
+                                resultProduct.Title = element.Attributes["value"].Value;
+                                break;
+                            case "productCategory":
+                                resultProduct.Category = element.Attributes["value"].Value;
+                                break;
+                            case "productDescription":
+                                resultProduct.Description = element.Attributes["value"].Value;
+                                break;
+                        }
+                    }
+                    productHelper.ProductList.Add(resultProduct);
                 }
                 catch (Exception)
                 {
