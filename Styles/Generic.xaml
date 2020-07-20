@@ -61,10 +61,10 @@
                 <Setter Property="Text" Value="正在检查更新。"/>
             </DataTrigger>
             <DataTrigger Binding="{Binding UpdateMode}" Value="down">
-                <Setter Property="Text" Value="更新正在下载。"/>
+                <Setter Property="Text" Value="正在下载更新。"/>
             </DataTrigger>
             <DataTrigger Binding="{Binding UpdateMode}" Value="inst">
-                <Setter Property="Text" Value="更新正在安装。"/>
+                <Setter Property="Text" Value="正在安装更新。"/>
             </DataTrigger>
             <DataTrigger Binding="{Binding UpdateMode}" Value="restart">
                 <Setter Property="Text" Value="更新已经完成，下次启动时将会启动新版本。"/>
