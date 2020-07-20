@@ -65,11 +65,17 @@ namespace Ruminoid.Dashboard.Helpers
                         return;
                     }
 
+                    Application.Current.Dispatcher.Invoke(() => UpdateMode = "down");
+
                     await _updateManager.DownloadReleases(updateInfo.ReleasesToApply,
                         progress => Application.Current.Dispatcher.Invoke(() => UpdateProgress = progress));
 
+                    Application.Current.Dispatcher.Invoke(() => UpdateMode = "inst");
+
                     await _updateManager.ApplyReleases(updateInfo,
                         progress => Application.Current.Dispatcher.Invoke(() => UpdateProgress = progress));
+
+                    Application.Current.Dispatcher.Invoke(() => UpdateMode = "restart");
                 });
             }
             catch (Exception)
