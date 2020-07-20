@@ -48,6 +48,21 @@
         </Style.Triggers>
     </Style>
 
+    <Style x:Key="UpdateProgressBarStyle" TargetType="ProgressBar" BasedOn="{StaticResource {x:Type ProgressBar}}">
+        <Setter Property="Visibility" Value="Collapsed" />
+        <Style.Triggers>
+            <DataTrigger Binding="{Binding UpdateMode}" Value="search">
+                <Setter Property="Visibility" Value="Visible" />
+            </DataTrigger>
+            <DataTrigger Binding="{Binding UpdateMode}" Value="down">
+                <Setter Property="Visibility" Value="Visible" />
+            </DataTrigger>
+            <DataTrigger Binding="{Binding UpdateMode}" Value="inst">
+                <Setter Property="Visibility" Value="Visible" />
+            </DataTrigger>
+        </Style.Triggers>
+    </Style>
+
     <Style x:Key="UpdateTextBlockStyle" TargetType="TextBlock">
         <!--Static Properties-->
         <Setter Property="TextWrapping" Value="Wrap"/>
