@@ -45,6 +45,7 @@ namespace Ruminoid.Dashboard.Windows
         private void OnClosing(object sender, CancelEventArgs e)
         {
             ConfigHelper<Config>.SaveConfig(Config.Current);
+            UpdateHelper.Current.Dispose();
         }
 
         #endregion

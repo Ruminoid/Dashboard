@@ -8,7 +8,7 @@ using Squirrel;
 
 namespace Ruminoid.Dashboard.Helpers
 {
-    public class UpdateHelper : INotifyPropertyChanged
+    public class UpdateHelper : IDisposable, INotifyPropertyChanged
     {
         #region Manager
 
@@ -124,5 +124,10 @@ namespace Ruminoid.Dashboard.Helpers
         }
 
         #endregion
+
+        public void Dispose()
+        {
+            _updateManager?.Dispose();
+        }
     }
 }
