@@ -150,6 +150,10 @@
       <Project>{e2b74ad6-0076-4a4c-92c1-83b1d07d4b94}</Project>
       <Name>Ruminoid.Common</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Ruminoid.LIVE\Ruminoid.LIVE.csproj">
+      <Project>{aad7f6dd-6b14-44dd-9dc0-2f925820e7db}</Project>
+      <Name>Ruminoid.LIVE</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Ruminoid.Logos\Ruminoid.Logos.csproj">
       <Project>{01314a27-6e46-4818-becf-89b44cec3e89}</Project>
       <Name>Ruminoid.Logos</Name>
@@ -177,7 +181,7 @@
     <SplashScreen Include="Assets\Splash.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-    <Target Name="AfterBuild" Condition=" '$(Configuration)' == 'Release'">
+  <Target Name="AfterBuild" Condition=" '$(Configuration)' == 'Release'">
     <Message Text="Starting AfterBuild..." />
     <GetAssemblyIdentity AssemblyFiles="$(TargetPath)">
       <Output TaskParameter="Assemblies" ItemName="myAssemblyInfo" />
