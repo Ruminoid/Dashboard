@@ -23,7 +23,6 @@ namespace Ruminoid.Dashboard
             DispatcherUnhandledException += (sender, args) =>
             {
                 args.Handled = true;
-                if (args.Exception.Source.Contains("VLC") || args.Exception.Message.Contains("VideoView")) return;
                 MessageBox.Show(
                     args.Exception.Message,
                     "灾难性故障",
@@ -34,8 +33,6 @@ namespace Ruminoid.Dashboard
 
             AppDomain.CurrentDomain.UnhandledException += (sender, args) =>
             {
-                if (((Exception)args.ExceptionObject).Source.Contains("VLC") ||
-                    ((Exception)args.ExceptionObject).Message.Contains("VideoView")) return;
                 MessageBox.Show(
                     ((Exception)args.ExceptionObject)?.Message ?? "Exception",
                     "灾难性故障",
