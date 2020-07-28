@@ -1,6 +1,6 @@
 <div align="center">
 
-<a href="https://update.ruminoid.world"><img src="https://vbox.moe/Icons/Icons/Ruminoid.Dashboard/Ruminoid.Dashboard.Colored.Transparent.png" width="200px"></a>
+<a href="https://update.ruminoid.world"><img src="https://vbox.moe/Icons/Icons/Ruminoid/Ruminoid.Colored.Transparent.png" width="200px"></a>
 
 <h1><a href="https://update.ruminoid.world">Ruminoid Dashboard</a></h1>
 
