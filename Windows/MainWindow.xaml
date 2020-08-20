@@ -8,6 +8,7 @@
                       xmlns:controls="http://schemes.grabacr.net/winfx/2014/controls"
                       xmlns:yDock="clr-namespace:YDock;assembly=YDock"
                       xmlns:visualIcon="clr-namespace:VisualIcon;assembly=VisualIcon"
+                      xmlns:dashboard="clr-namespace:Ruminoid.Dashboard;assembly=Ruminoid.Common"
                       mc:Ignorable="d"
                       FontFamily="Segoe UI"
                       Background="{DynamicResource ThemeBrushKey}"
@@ -178,8 +179,7 @@
                                         </Grid.ColumnDefinitions>
                                         <TextBox Grid.Column="0"
                                                  IsEnabled="{Binding IsChecked, ElementName=UpdateServerLock}"
-                                                 xmlns:config="clr-namespace:Ruminoid.Dashboard"
-                                                 DataContext="{x:Static config:Config.Current}"
+                                                 DataContext="{x:Static dashboard:Config.Current}"
                                                  Text="{Binding UpdateServer, UpdateSourceTrigger=PropertyChanged}"
                                                  VerticalAlignment="Center" Margin="0,0,12,0"
                                                  Background="Transparent" Foreground="White" />
@@ -211,7 +211,7 @@
                                         </Grid.ColumnDefinitions>
                                         <RadioButton Grid.Column="0" Content="正式版" Tag="stable"
                                                      xmlns:config="clr-namespace:Ruminoid.Dashboard"
-                                                     DataContext="{x:Static config:Config.Current}"
+                                                     DataContext="{x:Static dashboard:Config.Current}"
                                                      IsEnabled="{Binding IsChecked, ElementName=UpdateChannelLock}"
                                                      Click="UpdateChannelButtonBase_OnClick"
                                                      Foreground="White">
@@ -229,7 +229,7 @@
                                         </RadioButton>
                                         <RadioButton Grid.Column="1" Content="预览版" Tag="beta"
                                                      xmlns:config="clr-namespace:Ruminoid.Dashboard"
-                                                     DataContext="{x:Static config:Config.Current}"
+                                                     DataContext="{x:Static dashboard:Config.Current}"
                                                      IsEnabled="{Binding IsChecked, ElementName=UpdateChannelLock}"
                                                      Click="UpdateChannelButtonBase_OnClick"
                                                      Foreground="White">
@@ -247,7 +247,7 @@
                                         </RadioButton>
                                         <RadioButton Grid.Column="2" Content="自定义" Tag="others"
                                                      xmlns:config="clr-namespace:Ruminoid.Dashboard"
-                                                     DataContext="{x:Static config:Config.Current}"
+                                                     DataContext="{x:Static dashboard:Config.Current}"
                                                      IsEnabled="{Binding IsChecked, ElementName=UpdateChannelLock}"
                                                      Click="UpdateChannelButtonBase_OnClick"
                                                      Foreground="White">
@@ -276,7 +276,7 @@
                                         <TextBox Grid.Column="0"
                                                  IsEnabled="{Binding IsChecked, ElementName=UpdateChannelLock}"
                                                  xmlns:config="clr-namespace:Ruminoid.Dashboard"
-                                                 DataContext="{x:Static config:Config.Current}"
+                                                 DataContext="{x:Static dashboard:Config.Current}"
                                                  Text="{Binding UpdateChannel, UpdateSourceTrigger=PropertyChanged}"
                                                  VerticalAlignment="Center" Margin="0,0,12,0"
                                                  Background="Transparent" Foreground="White" />
