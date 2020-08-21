@@ -157,6 +157,10 @@
       <Project>{01314a27-6e46-4818-becf-89b44cec3e89}</Project>
       <Name>Ruminoid.Logos</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Ruminoid.PluginManager\Ruminoid.PluginManager.csproj">
+      <Project>{406d9222-e6c9-476f-8858-1d5d6bf0929b}</Project>
+      <Name>Ruminoid.PluginManager</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Ruminoid.Trimmer\Ruminoid.Trimmer.csproj">
       <Project>{bf9c6664-0e37-4992-bccb-ca19385e5899}</Project>
       <Name>Ruminoid.Trimmer</Name>
